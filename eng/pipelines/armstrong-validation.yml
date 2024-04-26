@@ -35,7 +35,7 @@ jobs:
     displayName: 'Install go dependencies'
 
   - pwsh: |
-      Get-ChildItem -Path $DirectoryPath $(Build.SourcesDirectory)/eng/scripts
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
       $(Build.SourcesDirectory)/eng/scripts/Armstrong-Validation.ps1 -Verbose
     displayName: Armstrong Validation
     ignoreLASTEXITCODE: true
