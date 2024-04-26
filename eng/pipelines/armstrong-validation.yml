@@ -14,6 +14,18 @@ jobs:
     modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
   steps:
+  - bash: |
+      ls -al $(Build.SourcesDirectory)
+      ls -al $(Build.SourcesDirectory)/eng
+      ls -al $(Build.SourcesDirectory)/eng/scripts
+    displayName: bash list eng/scripts
+
+  - pwsh: |
+      Get-ChildItem -Path $(Build.SourcesDirectory)
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
+    displayName: pwsh list eng/scripts
+
   - task: GoTool@0
     inputs:
       version: '1.22.2'
@@ -35,9 +47,6 @@ jobs:
     displayName: 'Install go dependencies'
 
   - pwsh: |
-      Get-ChildItem -Path $(Build.SourcesDirectory)
-      Get-ChildItem -Path $(Build.SourcesDirectory)/eng
-      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
       $(Build.SourcesDirectory)/eng/scripts/Armstrong-Validation.ps1 -Verbose
     displayName: Armstrong Validation
     ignoreLASTEXITCODE: true
