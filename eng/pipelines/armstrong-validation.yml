@@ -30,6 +30,18 @@ jobs:
     inputs:
       version: '1.22.2'
   
+  - bash: |
+      ls -al $(Build.SourcesDirectory)
+      ls -al $(Build.SourcesDirectory)/eng
+      ls -al $(Build.SourcesDirectory)/eng/scripts
+    displayName: bash list eng/scripts
+
+  - pwsh: |
+      Get-ChildItem -Path $(Build.SourcesDirectory)
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
+    displayName: pwsh list eng/scripts
+
   - script: |
       mkdir -p '$(GOBIN)'
       mkdir -p '$(GOPATH)/pkg'
@@ -41,10 +53,34 @@ jobs:
       echo '##vso[task.prependpath]$(GOROOT)/bin'
     displayName: 'Set up the Go workspace'
 
+  - bash: |
+      ls -al $(Build.SourcesDirectory)
+      ls -al $(Build.SourcesDirectory)/eng
+      ls -al $(Build.SourcesDirectory)/eng/scripts
+    displayName: bash list eng/scripts
+
+  - pwsh: |
+      Get-ChildItem -Path $(Build.SourcesDirectory)
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
+    displayName: pwsh list eng/scripts
+
   - script: |
       go version
       go install github.com/azure/armstrong@109e9a46faa57c2c5af762019342dff3030f7d79
     displayName: 'Install go dependencies'
+
+  - bash: |
+      ls -al $(Build.SourcesDirectory)
+      ls -al $(Build.SourcesDirectory)/eng
+      ls -al $(Build.SourcesDirectory)/eng/scripts
+    displayName: bash list eng/scripts
+
+  - pwsh: |
+      Get-ChildItem -Path $(Build.SourcesDirectory)
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng
+      Get-ChildItem -Path $(Build.SourcesDirectory)/eng/scripts
+    displayName: pwsh list eng/scripts
 
   - pwsh: |
       $(Build.SourcesDirectory)/eng/scripts/Armstrong-Validation.ps1 -Verbose
