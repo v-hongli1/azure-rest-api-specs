@@ -269,6 +269,47 @@ model EndpointPropertiesCustomHeadersItem {
 }
 
 /**
+ * An error returned by the Azure Resource Manager
+ */
+#suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@error
+@OpenAPI.extension("x-ms-external", true)
+model CloudError {
+  /**
+   * The content of the error.
+   */
+  error?: CloudErrorBody;
+}
+
+/**
+ * The content of an error returned by the Azure Resource Manager
+ */
+#suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+@OpenAPI.extension("x-ms-external", true)
+model CloudErrorBody {
+  /**
+   * Error code
+   */
+  code?: string;
+
+  /**
+   * Error message
+   */
+  message?: string;
+
+  /**
+   * Error target
+   */
+  target?: string;
+
+  /**
+   * Error details
+   */
+  #suppress "@azure-tools/typespec-azure-resource-manager/missing-x-ms-identifiers" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+  details?: CloudErrorBody[];
+}
+
+/**
  * The result of the request or operation.
  */
 model DeleteOperationResult {

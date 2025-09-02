@@ -60,6 +60,7 @@ interface HeatMapModels {
     @query("topLeft")
     @minItems(2)
     @maxItems(2)
+    @OpenAPI.extension("allowEmptyValue", true)
     topLeft?: float64[],
 
     /**
@@ -68,8 +69,9 @@ interface HeatMapModels {
     @query("botRight")
     @minItems(2)
     @maxItems(2)
+    @OpenAPI.extension("allowEmptyValue", true)
     botRight?: float64[],
-  ): ArmResponse<HeatMapModel> | ErrorResponse;
+  ): ArmResponse<HeatMapModel> | CloudError;
 }
 
 @@doc(HeatMapModel.name, "");
