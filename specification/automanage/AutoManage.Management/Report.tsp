@@ -83,8 +83,6 @@ interface Reports {
   /**
    * Retrieve a list of reports within a given configuration profile assignment
    */
-  #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-  @operationId("reports_ListByConfigurationProfileAssignments")
   listByConfigurationProfileAssignments is ReportOps.List<
     Report,
     Response = ArmResponse<ReportList>

@@ -1487,7 +1487,7 @@
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports": {
       "get": {
-        "operationId": "reports_ListByConfigurationProfileAssignments",
+        "operationId": "Reports_ListByConfigurationProfileAssignments",
         "tags": [
           "Reports"
         ],
