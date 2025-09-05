@@ -219,3 +219,4 @@ interface HCIReports {
 
 @@doc(Report.name, "The report name.");
 @@doc(Report.properties, "The properties for the report.");
+@@summary(Report.properties, "Properties");
